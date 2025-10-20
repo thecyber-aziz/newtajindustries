@@ -55,7 +55,7 @@ export default function HeroSection() {
       </div>
 
       {/* 🔹 Bottom Text Box */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white/1 backdrop-blur-md font-[ClashDisplay] text-center p-8 max-w-4xl w-[90%] rounded-2xl bord">
+      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 bg-white/1 backdrop-blur-md font-[ClashDisplay] text-center p-8 max-w-4xl w-[90%] rounded-2xl bord">
         <h2 className="text-2xl sm:text-6xl text-red-600 font-black mb-4">
           All Types Injection Moulding & Repairing
         </h2>
