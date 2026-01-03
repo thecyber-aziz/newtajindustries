@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FONTS IN IMPORT*/
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@font-face{
+  font-family: Grotesk;
+  src: url(../public/Founders Grotesk X-Condensed Bold.woff);
+}
+@font-face{
+  font-family: NRFONT;
+  src: url(../public/NeueMontreal-Light.woff);
+}
+@font-face{
+  font-family: NRFONT;
+  src: url(../public/NeueMontreal-Regular.woff);
+}
+.GroteskFont{
+  font-family: Grotesk;
+}
+@layer base {
+  @font-face {
+    font-family: 'NeueL';
+    src: url(../public/NeueMontreal-Light.woff) format('woff2');
+  }
+}
+@layer base {
+  @font-face {
+    font-family: 'NeueR';
+    src: url(../public/NeueMontreal-Regular.woff) format('woff2');
+  }
+}
+@media (max-width: 768px){
+  .NAVLIST{
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background-color: #000000;
+    height: 0px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    transition: 0.5s ease;
+  }
+  .SHOWNAV{
+    height: calc(100vh - 64px);
+  }
+  .NAVLIST>a{
+    font-size: 13vw;
+    font-family: Grotesk;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    line-height: 9vw;
+    color: white;
+    margin-left: 32px;
+  }
+  .NAVLIST>a:nth-child(1){
+    
+  }
+  .NAVLIST>a>mark{
+    background-color: transparent;
+    font-size: 4vw;
+    margin-right: 3vw;
+    font-family: NeueR;
+    line-height: 1vw;
+    color: white;
+  }
+  .SOCIAL{
+    color: white;
+  }
+  .SOCIAL span{
+    font-size: 3vw;
+    color: #a1a1aa;
+    margin-left: 32px;
+  }
+  .SOCIAL ul{
+    display: flex;
+    flex-direction: column;
+    margin-left: 32px;
+  }
+  .SOCIAL ul a{
+    font-size: 4vw;
+    text-decoration: underline;
+    color: #4286f4;
+  }
+  .SOCIAL ul a svg{
+    width: 4vw;
+    display: inline-block;
+  }
+  .line1{
+    transition: 0.2s linear;
+  }
+  .line2{
+    transition: 0.2s linear;
+  }
+  .x{
+   transform: rotate(14deg);
+   transform-origin: left;
+   /* background-color: white;  */
+ }
+ .y{
+   transform: rotate(-14deg);
+   transform-origin: left;
+   /* background-color: white;  */
+ }
+ .navBack{
+   background-color: #212121;
+ }
+}
