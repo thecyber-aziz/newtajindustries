@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import emailjs from "@emailjs/browser";
 
 export default function Contactpage() {
   const [rotate, setRotate] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -30,7 +30,7 @@ export default function Contactpage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  /* Submit form */
+  /* Fake Submit */
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -39,33 +39,22 @@ export default function Contactpage() {
       return;
     }
 
-    emailjs
-      .send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        {
-          from_name: formData.name,
-          company: formData.company,
-          phone: formData.phone,
-          email: formData.email,
-          message: formData.message,
-        },
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(() => {
-        alert("Message sent successfully ✅");
-        setFormData({
-          name: "",
-          company: "",
-          phone: "",
-          email: "",
-          message: "",
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("Failed to send message ❌");
-      });
+    // Show success popup
+    setShowPopup(true);
+
+    // Reset form
+    setFormData({
+      name: "",
+      company: "",
+      phone: "",
+      email: "",
+      message: "",
+    });
+
+    // Auto close popup
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 3000);
   };
 
   return (
@@ -76,14 +65,14 @@ export default function Contactpage() {
           {[1, 2].map((_, i) => (
             <div
               key={i}
-              className="h-[40vw] w-[40vw] bg-white rounded-full grid place-items-center"
+              className="h-[40vw] w-[40vw] md:h-[18vw] md:w-[18vw] bg-white rounded-full grid place-items-center"
             >
-              <div className="h-[25vw] w-[25vw] bg-black rounded-full relative">
+              <div className="h-[25vw] w-[25vw] md:h-[10vw] md:w-[10vw] bg-black rounded-full relative">
                 <div
                   style={{ transform: `translateY(-50%) rotate(${rotate}deg)` }}
                   className="w-full h-[3vw] absolute top-1/2 -translate-y-1/2"
                 >
-                  <div className="h-[5vw] w-[5vw] bg-white rounded-full"></div>
+                  <div className="h-[5vw] w-[5vw] md:h-[2vw] md:w-[2vw] bg-white rounded-full"></div>
                 </div>
               </div>
             </div>
@@ -95,7 +84,7 @@ export default function Contactpage() {
         CONTACT
       </h1>
 
-      {/* ✅ Contact Form with placeholders */}
+      {/* Contact Form */}
       <form onSubmit={handleSubmit} className="px-8 w-full md:w-[40vw]">
         <input
           type="text"
@@ -112,7 +101,7 @@ export default function Contactpage() {
           placeholder="Company Name"
           value={formData.company}
           onChange={handleChange}
-          className="w-full h-10 border  mb-2 px-3 rounded"
+          className="w-full h-10 border mb-2 px-3 rounded"
         />
 
         <input
@@ -139,7 +128,7 @@ export default function Contactpage() {
           placeholder="Message"
           value={formData.message}
           onChange={handleChange}
-          className="w-full border mb-4 p-3 rounded "
+          className="w-full border mb-4 p-3 rounded"
         ></textarea>
 
         <button
@@ -149,6 +138,16 @@ export default function Contactpage() {
           Send Message
         </button>
       </form>
+
+      {/* Success Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+          <div className="bg-white px-6 py-4 rounded-lg shadow-lg text-center">
+            <h2 className="text-lg font-semibold mb-2">✅ Success</h2>
+            <p>Your message has been sent successfully!</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

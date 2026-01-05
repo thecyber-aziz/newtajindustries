@@ -5,10 +5,10 @@ export default function Aboutpage() {
 
   // Slider images
   const images = [
-    "/AboutImg2.png",
-    "/AboutImg.png",
-    "/AboutImg3.png",
-    "/AboutImg4.png",
+    "/about2.webp",
+    "/about3.webp",
+    "/about1.webp",
+    "/about4.webp",
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -71,28 +71,30 @@ export default function Aboutpage() {
         <h2 className="text-[4vw] md:text-[2vw]">• NEW TAJ INDUSTRIES</h2>
 
         {/* Image Slider */}
-        <div className="relative w-full md:w-[40vw] h-[30vh] md:h-[30vw] rounded-xl overflow-hidden my-[4vw] md:my-[2vw]">
+       <div className="flex justify-center items-center min-h-screen">
+  <div className="relative w-full md:w-[40vw] h-[30vh] md:h-[30vw] rounded-xl overflow-hidden">
+    <img
+      src={images[currentIndex]}
+      alt="About Slider"
+      className="w-full h-full object-cover transition-all duration-500"
+    />
 
-          <img
-            src={images[currentIndex]}
-            alt="About Slider"
-            className="w-full h-full object-cover transition-all duration-500"
-          />
+    <button
+      onClick={prevSlide}
+      className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white"
+    >
+      ◀
+    </button>
 
-          <button
-            onClick={prevSlide}
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/8 p-2 rounded-full hover:bg-white"
-          >
-            ◀
-          </button>
+    <button
+      onClick={nextSlide}
+      className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white"
+    >
+      ▶
+    </button>
+  </div>
+</div>
 
-          <button
-            onClick={nextSlide}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/8 p-2 rounded-full hover:bg-white"
-          >
-            ▶
-          </button>
-        </div>
 
         {/* Text */}
         <p className="text-[4vw] md:text-[2vw] mb-4">
@@ -120,7 +122,16 @@ export default function Aboutpage() {
           </button>
         ))}
       </div>
-      <div className="md:centr"><img src="/board.jpg" alt="" /></div>
+      <div className="flex justify-center md:justify-center">
+  <div className="w-[60%] md:w-[30vw]">
+    <img
+      src="/board.jpg"
+      alt="board"
+      className="w-full rounded-lg"
+    />
+  </div>
+</div>
+
     </div>
   );
 }
